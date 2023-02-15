@@ -22,5 +22,6 @@
 |      armv6       |    ✅     |  armv6-lite  |
 |    i386\| x86    |    ✅     |  i386-lite   |
 |      s390x       |    ✅     |  s390x-lite  |
+|      ppc64le       |    ✅     |  ppc64le-lite  |
 
 总标签：`docker pull ddsderek/nas-tools:lite`
