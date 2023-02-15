@@ -239,7 +239,7 @@ jobs:
           context: .
           file: lite/ppc64le.lite.Dockerfile
           platforms: |
-            lite/linux/ppc64le
+            linux/ppc64le
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-lite
