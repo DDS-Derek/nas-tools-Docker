@@ -33,7 +33,7 @@ jobs:
           context: .
           file: s390x.lite.Dockerfile
           platforms: |
-            linux/s390x
+            linux/ppc64le
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/nas-tools:test-lite
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-test-lite
