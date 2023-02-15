@@ -282,7 +282,7 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-lite
 
   tag-version:
-    needs: [armv7, armv6, arm64v8, amd64, i386, s390x]
+    needs: [armv7, armv6, arm64v8, amd64, i386, s390x, ppc64le]
     name: Tag-Version
     runs-on: ubuntu-latest
     steps:
