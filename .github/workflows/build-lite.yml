@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: armv7.lite.Dockerfile
+          file: lite/armv7.lite.Dockerfile
           platforms: |
             linux/arm/v7
           push: true
@@ -67,7 +67,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: armv6.lite.Dockerfile
+          file: lite/armv6.lite.Dockerfile
           platforms: |
             linux/arm/v6
           push: true
@@ -101,7 +101,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: arm64v8.lite.Dockerfile
+          file: lite/arm64v8.lite.Dockerfile
           platforms: |
             linux/arm64/v8
           push: true
@@ -135,7 +135,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: amd64.lite.Dockerfile
+          file: lite/amd64.lite.Dockerfile
           platforms: |
             linux/amd64
           push: true
@@ -169,7 +169,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: 386.lite.Dockerfile
+          file: lite/386.lite.Dockerfile
           platforms: |
             linux/386
           push: true
@@ -203,15 +203,49 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: s390x.lite.Dockerfile
+          file: lite/s390x.lite.Dockerfile
           platforms: |
             linux/s390x
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:s390x-lite
 
+  ppc64le:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@master
+
+      - 
+        name: Set Up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - 
+        name: Set Up Buildx
+        uses: docker/setup-buildx-action@v2
+        
+      - 
+        name: Login DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - 
+        name: Build
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: lite/ppc64le.lite.Dockerfile
+          platforms: |
+            lite/linux/ppc64le
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-lite
+
   tag:
-    needs: [armv7, armv6, arm64v8, amd64, i386, s390x]
+    needs: [armv7, armv6, arm64v8, amd64, i386, s390x, ppc64le]
     name: Tag
     runs-on: ubuntu-latest
     steps:
@@ -244,7 +278,8 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:arm64v8-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:amd64-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:i386-lite \
-            ${{ secrets.DOCKER_USERNAME }}/nas-tools:s390x-lite
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:s390x-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-lite
 
   tag-version:
     needs: [armv7, armv6, arm64v8, amd64, i386, s390x]
@@ -289,4 +324,5 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:arm64v8-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:amd64-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:i386-lite \
-            ${{ secrets.DOCKER_USERNAME }}/nas-tools:s390x-lite
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:s390x-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-lite

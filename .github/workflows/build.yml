@@ -13,11 +13,6 @@ jobs:
         name: Checkout
         uses: actions/checkout@master
 
-      - name: Get ARCH
-        id: set-arch
-        run: |
-          echo "::set-output name=arch::$(cat full.arch.txt)"
-
       - 
         name: Set Up QEMU
         uses: docker/setup-qemu-action@v2
@@ -35,11 +30,10 @@ jobs:
 
       - 
         name: Build
-        if: contains(steps.set-arch.outputs.arch, 'armv7')
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: armv7.Dockerfile
+          file: full/armv7.Dockerfile
           platforms: |
             linux/arm/v7
           push: true
@@ -53,11 +47,6 @@ jobs:
         name: Checkout
         uses: actions/checkout@master
 
-      - name: Get ARCH
-        id: set-arch
-        run: |
-          echo "::set-output name=arch::$(cat full.arch.txt)"
-
       - 
         name: Set Up QEMU
         uses: docker/setup-qemu-action@v2
@@ -75,11 +64,10 @@ jobs:
 
       - 
         name: Build
-        if: contains(steps.set-arch.outputs.arch, 'arm64v8')
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: arm64v8.Dockerfile
+          file: full/arm64v8.Dockerfile
           platforms: |
             linux/arm64/v8
           push: true
@@ -93,11 +81,6 @@ jobs:
         name: Checkout
         uses: actions/checkout@master
 
-      - name: Get ARCH
-        id: set-arch
-        run: |
-          echo "::set-output name=arch::$(cat full.arch.txt)"
-
       - 
         name: Set Up QEMU
         uses: docker/setup-qemu-action@v2
@@ -115,11 +98,10 @@ jobs:
 
       - 
         name: Build
-        if: contains(steps.set-arch.outputs.arch, 'amd64')
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: amd64.Dockerfile
+          file: full/amd64.Dockerfile
           platforms: |
             linux/amd64
           push: true
@@ -133,11 +115,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Get ARCH
-        id: set-arch
-        run: |
-          echo "::set-output name=arch::$(cat full.arch.txt)"
 
       - name: Set up QEMU
         id: qemu
@@ -158,12 +135,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: create version tag
-        if: contains(steps.set-arch.outputs.arch, 'amd64-arm64v8-armv7')
         run: |
           docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:latest \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:armv7 \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:arm64v8 \
-            ${{ secrets.DOCKER_USERNAME }}/nas-tools:amd64 \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:amd64
 
   tag-version:
     needs: [armv7, arm64v8, amd64]
@@ -205,4 +181,4 @@ jobs:
           docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }} \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:armv7 \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:arm64v8 \
-            ${{ secrets.DOCKER_USERNAME }}/nas-tools:amd64 \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:amd64
