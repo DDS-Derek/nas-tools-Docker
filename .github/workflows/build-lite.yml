@@ -326,3 +326,45 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:i386-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:s390x-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-lite
+
+      - name: create version tag armv7
+        if: steps.set-version.outputs.version != '/master'
+        run: |
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-armv7-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:armv7-lite
+
+      - name: create version tag armv6
+        if: steps.set-version.outputs.version != '/master'
+        run: |
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-armv6-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:armv6-lite
+
+      - name: create version tag arm64v8
+        if: steps.set-version.outputs.version != '/master'
+        run: |
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-arm64v8-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:arm64v8-lite
+
+      - name: create version tag amd64
+        if: steps.set-version.outputs.version != '/master'
+        run: |
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-amd64-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:amd64-lite
+
+      - name: create version tag i386
+        if: steps.set-version.outputs.version != '/master'
+        run: |
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-i386-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:i386-lite
+
+      - name: create version tag s390x
+        if: steps.set-version.outputs.version != '/master'
+        run: |
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-s390x-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:s390x-lite
+
+      - name: create version tag armv7
+        if: steps.set-version.outputs.version != '/master'
+        run: |
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-ppc64le-lite \
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-lite
