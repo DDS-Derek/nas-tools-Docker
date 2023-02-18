@@ -6,22 +6,22 @@
 
 |       架构       | 支持情况 |  标签   |
 | :--------------: | :------: | :-----: |
-| amd64 \| x86-64  |    ✅     |  amd64  |
-| arm64v8 \| arm64 |    ✅     | arm64v8 |
-|  armv7 \| armhf  |    ✅     |  armv7  |
+| amd64 \| x86-64  |    ✅     |  <Version>-amd64  |
+| arm64v8 \| arm64 |    ✅     | <Version>-arm64v8 |
+|  armv7 \| armhf  |    ✅     |  <Version>-armv7  |
 
-总标签：`docker pull ddsderek/nas-tools:latest`
+总标签：`docker pull ddsderek/nas-tools:latest` `docker pull ddsderek/nas-tools:<Version>`
 
 ### Lite版本
 
 |       架构       | 支持情况 |     标签     |
 | :--------------: | :------: | :----------: |
-| amd64 \| x86-64  |    ✅     |  amd64-lite  |
-| arm64v8 \| arm64 |    ✅     | arm64v8-lite |
-|  armv7 \| armhf  |    ✅     |  armv7-lite  |
-|      armv6       |    ✅     |  armv6-lite  |
-|    i386\| x86    |    ✅     |  i386-lite   |
-|      s390x       |    ✅     |  s390x-lite  |
-|      ppc64le       |    ✅     |  ppc64le-lite  |
+| amd64 \| x86-64  |    ✅     |  <Version>-amd64-lite  |
+| arm64v8 \| arm64 |    ✅     | <Version>-arm64v8-lite |
+|  armv7 \| armhf  |    ✅     |  <Version>-armv7-lite  |
+|      armv6       |    ✅     |  <Version>-armv6-lite  |
+|    i386\| x86    |    ✅     |  <Version>-i386-lite   |
+|      s390x       |    ✅     |  <Version>-s390x-lite  |
+|      ppc64le       |    ✅     |  <Version>-ppc64le-lite  |
 
-总标签：`docker pull ddsderek/nas-tools:lite`
+总标签：`docker pull ddsderek/nas-tools:lite` `docker pull ddsderek/nas-tools:<Version>-lite`
