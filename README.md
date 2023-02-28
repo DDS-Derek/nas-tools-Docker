@@ -1,4 +1,5 @@
 # nas-tools-Docker
+# 因某些原因，NAStool v3暂时不支持arm64和其他架构，故本项目开鸽
 
 使用方法与官方镜像一致
 
