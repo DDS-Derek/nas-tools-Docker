@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: full/armv7.Dockerfile
+          file: armv7.Dockerfile
           platforms: |
             linux/arm/v7
           push: true
@@ -67,7 +67,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: full/arm64v8.Dockerfile
+          file: arm64v8.Dockerfile
           platforms: |
             linux/arm64/v8
           push: true
@@ -101,7 +101,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: full/amd64.Dockerfile
+          file: amd64.Dockerfile
           platforms: |
             linux/amd64
           push: true
