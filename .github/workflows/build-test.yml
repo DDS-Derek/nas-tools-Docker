@@ -31,9 +31,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: s390x.lite.Dockerfile
+          file: armv7.Dockerfile
           platforms: |
-            linux/ppc64le
+            linux/arm/v7
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/nas-tools:ppc64le-test-lite
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:test

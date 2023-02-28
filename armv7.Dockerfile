@@ -1,7 +1,7 @@
 FROM alpine
 RUN apk update \
     && apk add --no-cache libffi-dev \
-    && apk add --no-cache g++ nodejs \
+    && apk add --no-cache g++ nodejs rust \
     && apk add --no-cache $(echo $(wget --no-check-certificate -qO- https://raw.githubusercontent.com/NAStool/nas-tools/master/package_list.txt)) \
     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo "${TZ}" > /etc/timezone \
