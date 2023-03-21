@@ -30,10 +30,10 @@ jobs:
         name: Build
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: test.Dockerfile
+          context: official/v2.9.1/
+          file: Dockerfile
           platforms: |
-            linux/arm64/v8
+            linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/nas-tools:test
+            ${{ secrets.DOCKER_USERNAME }}/nas-tools:v2.9.1
