@@ -39,7 +39,7 @@ jsonpath==0.82
 jsonschema==4.16.0
 loguru==0.6.0
 lxml==4.9.1
-Mako==1.2.3
+Mako==1.2.4
 MarkupSafe==2.1.1
 matplotlib-inline==0.1.6
 msgpack==1.0.4
