@@ -33,7 +33,7 @@ humanize==4.4.0
 idna==3.3
 influxdb==5.3.1
 itsdangerous==2.1.2
-jedi==0.18.1
+jedi==0.18.2
 Jinja2==3.1.2
 jsonpath==0.82
 jsonschema==4.16.0
