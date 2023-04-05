@@ -28,7 +28,7 @@ RUN set -xe && \
     mkdir -p /tmp/python3 && \
     tar -xf /tmp/python3.tgz -C /tmp/python3 --strip-components 1 && \
     cd /tmp/python3 && \
-    ./configure --enable-optimizations && \
+    ./configure && \
     make -j 4 && \
     make altinstall && \
     cd / && \
