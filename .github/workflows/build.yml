@@ -30,7 +30,7 @@ jobs:
 
       - 
         name: Build
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: armv7.Dockerfile
@@ -64,7 +64,7 @@ jobs:
 
       - 
         name: Build
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: arm64v8.Dockerfile
@@ -98,7 +98,7 @@ jobs:
 
       - 
         name: Build
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: amd64.Dockerfile
