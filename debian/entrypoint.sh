@@ -25,4 +25,4 @@ if [ -n "$(which redis-server)" ]; then
 fi
 
 # 启动主程序
-exec gosu nt:nt "$(which dumb-init)" "$(which pm2-runtime)" start run.py -n NAStool --interpreter python3
+exec su-exec nt:nt "$(which dumb-init)" "$(which pm2-runtime)" start run.py -n NAStool --interpreter python3

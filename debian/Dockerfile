@@ -52,6 +52,8 @@ RUN set -xe && \
         sudo && \
     ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime && \
     echo "${TZ}" > /etc/timezone && \
+    # su-exec gosu
+    ln -sf /usr/sbin/gosu /usr/bin/su-exec && \
     # Chromium
     apt-get install -y \
         chromium \

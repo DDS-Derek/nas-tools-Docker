@@ -37,8 +37,8 @@ jobs:
         name: Build
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: amd64.Dockerfile
+          context: ./debian
+          file: ./debian/Dockerfile
           platforms: |
             linux/amd64
           push: true
@@ -78,8 +78,8 @@ jobs:
         name: Build
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: arm64v8.Dockerfile
+          context: ./debian
+          file: ./debian/Dockerfile
           platforms: |
             linux/arm64/v8
           push: true
