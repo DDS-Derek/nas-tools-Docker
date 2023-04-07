@@ -25,8 +25,8 @@ RUN set -xe && \
     make -j 4 && \
     make altinstall && \
     # Clear
-    apt-get autoremove && \
-    apt-get clean && \
+    apt-get autoremove -y && \
+    apt-get clean -y && \
     rm -rf \
         /tmp/* \
         /root/.cache \
