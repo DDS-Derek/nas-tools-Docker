@@ -1,4 +1,4 @@
-FROM debian:11
+FROM debian:11-slim
 
 RUN set -xe && \
     export DEBIAN_FRONTEND="noninteractive" && \
@@ -25,6 +25,7 @@ RUN set -xe && \
     make -j 4 && \
     make altinstall && \
     # Clear
+    apt-get remove -y build-essential && \
     apt-get autoremove -y && \
     apt-get clean -y && \
     rm -rf \
