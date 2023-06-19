@@ -1,4 +1,4 @@
-FROM debian:11-slim
+FROM debian:12-slim
 
 RUN set -eux && \
 	apt update -y && \
